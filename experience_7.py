@@ -23,21 +23,22 @@ def run_experiment7():
     print("Running Experiment 7: Traditional vs Bottom-up Merge Sort")
     print("=" * 50)
     
-    lengths = [100, 500, 1000, 5000, 10000, 20000, 50000, 100000]
+    lengths = [256, 512, 1024, 8192, 16384, 32768, 131072, 262144]
     algorithms = {
         "Merge Sort": mergesort,
         "Bottom-up Merge Sort": bottom_up_mergesort
     }
     
     times = {name: [] for name in algorithms}
-    runs = 5
+    runs = 15
+    Max = 200000
     
     for length in lengths:
         print(f"  Testing length = {length}")
         avg_times = {name: 0 for name in algorithms}
         
         for _ in range(runs):
-            L = create_random_list(length, 100000)
+            L = create_random_list(length, Max)
             for name, sort_func in algorithms.items():
                 L_copy = L.copy()
                 start = time.time()

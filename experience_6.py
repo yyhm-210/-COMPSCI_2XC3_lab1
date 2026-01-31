@@ -24,14 +24,15 @@ def run_experiment6():
     print("=" * 50)
     
     # Test different list sizes
-    lengths = [100, 500, 1000, 5000, 10000, 20000, 50000, 100000]
+    lengths = [128, 512, 1024, 8192, 16384, 32768, 65536, 131072]
     algorithms = {
         "Quick Sort": quicksort,
         "Dual Pivot Quick Sort": dual_quicksort
     }
     
     times = {name: [] for name in algorithms}
-    runs = 5  # Number of repetitions for averaging
+    runs = 20  # Number of repetitions for averaging
+    max = 100000
     
     for length in lengths:
         print(f"  Testing length = {length}")
@@ -39,7 +40,7 @@ def run_experiment6():
         
         # Run multiple times for better average
         for _ in range(runs):
-            L = create_random_list(length, 100000)
+            L = create_random_list(length, max)
             for name, sort_func in algorithms.items():
                 L_copy = L.copy()
                 start = time.time()

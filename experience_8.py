@@ -42,7 +42,8 @@ def run_experiment8():
     }
     
     times_small = {name: [] for name in algorithms_small}
-    runs = 10
+    runs = 25
+    max_value = 200000
     
     for length in small_lengths:
         if length > 200:
@@ -52,7 +53,7 @@ def run_experiment8():
         avg_times = {name: 0 for name in algorithms_small}
         
         for _ in range(runs):
-            L = create_random_list(length, 10000)
+            L = create_random_list(length, max_value)
             for name, sort_func in algorithms_small.items():
                 L_copy = L.copy()
                 start = time.time()
@@ -74,13 +75,13 @@ def run_experiment8():
     plt.title("Experiment 8: Comparison for Small Lists")
     plt.legend()
     plt.grid(True, alpha=0.3)
-    plt.xlim(0, 1000)  # Focus on small list sizes
+    plt.xlim(0, 1000)
     plt.show()
     
     # Print summary for key sizes
     print("\nExperiment 8 Summary (Key sizes):")
     print("=" * 40)
-    key_sizes = [10, 20, 30, 50, 100, 200, 500, 1000]
+    key_sizes = [1, 30, 35, 50, 170, 290, 5500, 100000]
     for size in key_sizes:
         if size in small_lengths:
             idx = small_lengths.index(size)
