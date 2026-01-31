@@ -3,14 +3,15 @@ import timeit
 import matplotlib.pyplot as plt
 
 from bad_sorts import  create_near_sorted_list
-from good_sorts import quicksort, mergesort, heapsort
+from good_sorts_update import quicksort, mergesort, heapsort
+import sys
+sys.setrecursionlimit(20000)
 
+length = 2000
+max_value = 20000
+runs = 50
 
-length = 800
-max_value = 100
-runs = 10
-
-swaps_values = [0, 10, 50, 100, 200, 500, 1000, 2000, 4000]
+swaps_values = [2**x for x in range(10)]
 
 data_quick = []
 data_merge = []
@@ -51,8 +52,8 @@ plt.plot(swaps_values, data_quick, label="Quick sort")
 plt.plot(swaps_values, data_merge, label="Merge sort")
 plt.plot(swaps_values, data_heap, label="Heap sort")
 plt.xlabel("Number of swaps")
-plt.ylabel("Average runtime (seconds)")
-plt.title("Experiment 5: Runtime vs Degree of Disorder")
+plt.ylabel("Average runtime ")
+plt.title("Experiment 5: Runtime vs Swaps")
 plt.legend()
 plt.grid(True)
 plt.show()
