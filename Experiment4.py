@@ -2,12 +2,12 @@ import random
 import timeit
 import matplotlib.pyplot as plt
 from bad_sorts import create_random_list
-from good_sorts import heapsort, mergesort, quicksort
+from good_sorts_update import heapsort, mergesort, quicksort
 
 
-lengths = [1000 * x for x in range(10)]
-max_value = 100
-runs = 10
+lengths = [2 ** x for x in range(10)]
+max_value = 10000
+runs = 50
 
 lists = [create_random_list(n, max_value) for n in lengths]
 
@@ -51,7 +51,7 @@ plt.plot(lengths, data_B, label="Merge sort")
 plt.plot(lengths, data_C, label="Heap sort")
 plt.xlabel("List length (n)")
 plt.ylabel("Average runtime (seconds)")
-plt.title("Experiment 4: Runtime vs List Length (Good Sorts)")
+plt.title("Runtime vs List Length ")
 plt.legend()
 plt.grid(True)
 plt.show()
