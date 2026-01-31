@@ -23,7 +23,7 @@ def run_experiment7():
     print("Running Experiment 7: Traditional vs Bottom-up Merge Sort")
     print("=" * 50)
     
-    lengths = [256, 512, 1024, 8192, 16384, 32768, 131072, 262144]
+    lengths = [2 ** x for x in range(20)]
     algorithms = {
         "Merge Sort": mergesort,
         "Bottom-up Merge Sort": bottom_up_mergesort

@@ -24,12 +24,12 @@ def run_experiment6():
     print("=" * 50)
     
     # Test different list sizes
-    lengths = [128, 512, 1024, 8192, 16384, 32768, 65536, 131072]
     algorithms = {
         "Quick Sort": quicksort,
         "Dual Pivot Quick Sort": dual_quicksort
     }
-    
+
+    lengths = [2 ** x for x in range(20)]
     times = {name: [] for name in algorithms}
     runs = 20  # Number of repetitions for averaging
     max = 100000
