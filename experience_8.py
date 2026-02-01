@@ -74,22 +74,6 @@ def run_experiment8():
     plt.legend()
     plt.grid(True)
     plt.show()
-    # Print summary for key sizes
-    print("\nExperiment 8 Summary (Key sizes):")
-    print("=" * 40)
-    key_sizes = [1, 30, 35, 50, 170, 290, 5500, 100000]
-    for size in key_sizes:
-        if size in small_lengths:
-            idx = small_lengths.index(size)
-            print(f"\nList size {size}:")
-            print(f"  Insertion Sort: {times_small['Insertion Sort'][idx]:.6f} seconds")
-            print(f"  Merge Sort: {times_small['Merge Sort'][idx]:.6f} seconds")
-            print(f"  Quick Sort: {times_small['Quick Sort'][idx]:.6f} seconds")
-    
-    return {
-        'small_times': times_small,
-        'small_lengths': small_lengths
-    }
 
 if __name__ == "__main__":
     run_experiment8()
