@@ -2,7 +2,7 @@
 Experiment 8: Compare Insertion sort with Merge and Quick sort for small lists
 """
 
-import time
+import timeit
 import random
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,7 +34,7 @@ def run_experiment8():
     print("=" * 50)
     
     # Test small list sizes
-    small_lengths = list(range(5, 101, 5)) + list(range(100, 1001, 100))
+    small_lengths = [ x for x in range(140)]
     algorithms_small = {
         "Insertion Sort": insertion_sort,
         "Merge Sort": mergesort,
@@ -42,12 +42,11 @@ def run_experiment8():
     }
     
     times_small = {name: [] for name in algorithms_small}
-    runs = 25
-    max_value = 200000
+    runs = 400
+    max_value = 2000
     
     for length in small_lengths:
-        if length > 200:
-            runs = 5  # Fewer runs for larger lists
+        
         
         print(f"  Testing length = {length}")
         avg_times = {name: 0 for name in algorithms_small}
@@ -56,9 +55,9 @@ def run_experiment8():
             L = create_random_list(length, max_value)
             for name, sort_func in algorithms_small.items():
                 L_copy = L.copy()
-                start = time.time()
+                start = timeit.default_timer()
                 sort_func(L_copy)
-                end = time.time()
+                end = timeit.default_timer()
                 avg_times[name] += (end - start)
         
         for name in algorithms_small:
@@ -66,18 +65,15 @@ def run_experiment8():
             times_small[name].append(avg_times[name])
     
     # Plot comparison for small lists
-    plt.figure(figsize=(12, 8))
-    plt.plot(small_lengths, times_small["Insertion Sort"], label="Insertion Sort", marker='o', linewidth=2)
-    plt.plot(small_lengths, times_small["Merge Sort"], label="Merge Sort", marker='s', linewidth=2)
-    plt.plot(small_lengths, times_small["Quick Sort"], label="Quick Sort", marker='^', linewidth=2)
+    plt.plot(small_lengths, times_small["Insertion Sort"], label="Insertion Sort")
+    plt.plot(small_lengths, times_small["Merge Sort"], label="Merge Sort")
+    plt.plot(small_lengths, times_small["Quick Sort"], label="Quick Sort")
     plt.xlabel("List length (n)")
     plt.ylabel("Average runtime (seconds)")
     plt.title("Experiment 8: Comparison for Small Lists")
     plt.legend()
-    plt.grid(True, alpha=0.3)
-    plt.xlim(0, 1000)
+    plt.grid(True)
     plt.show()
-    
     # Print summary for key sizes
     print("\nExperiment 8 Summary (Key sizes):")
     print("=" * 40)
