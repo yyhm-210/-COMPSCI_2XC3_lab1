@@ -30,7 +30,7 @@ def run_experiment7():
     }
     
     times = {name: [] for name in algorithms}
-    runs = 15
+    runs = 20
     Max = 200000
     
     for length in lengths:

@@ -43,7 +43,7 @@ def run_experiment8():
     
     times_small = {name: [] for name in algorithms_small}
     runs = 400
-    max_value = 2000
+    max_value = 10000
     
     for length in small_lengths:
         
